@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>aix4all.de - Online Arbitrage & Großhandel</title>
+    <style>
+        :root {
+            --main-light-bg: #f5f5f7;
+            --main-dark-text: #1d1d1f;
+            --main-accent: #2563eb;
+            --main-gray: #86868b;
+            --main-border: #d2d2d7;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        
+        body {
+            background-color: var(--main-light-bg);
+            color: var(--main-dark-text);
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 0 20px;
+            border-bottom: 1px solid var(--main-border);
+        }
+        
+        nav {
+            max-width: 980px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 44px;
+        }
+        
+        .logo {
+            font-size: 20px;
+            font-weight: 600;
+            text-decoration: none;
+            color: var(--main-dark-text);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--main-dark-text);
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--main-accent);
+        }
+        
+        .hero {
+            padding-top: 120px;
+            padding-bottom: 80px;
+            text-align: center;
+            max-width: 980px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            font-size: 48px;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+            margin-bottom: 20px;
+        }
+        
+        .subtitle {
+            font-size: 24px;
+            color: var(--main-gray);
+            margin-bottom: 40px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--main-accent);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 24px;
+            text-decoration: none;
+            font-size: 17px;
+            font-weight: 400;
+            transition: all 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #1d4ed8;
+            transform: scale(1.02);
+        }
+        
+        section {
+            padding: 80px 20px;
+            max-width: 980px;
+            margin: 0 auto;
+        }
+        
+        h2 {
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card-img {
+            width: 100%;
+            height: 180px;
+            background-color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+        
+        .card-content {
+            padding: 20px;
+        }
+        
+        .card h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .card p {
+            color: var(--main-gray);
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+        
+        footer {
+            background-color: white;
+            padding: 40px 20px;
+            text-align: center;
+            border-top: 1px solid var(--main-border);
+        }
+        
+        .footer-content {
+            max-width: 980px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            text-align: left;
+        }
+        
+        .footer-column h4 {
+            font-size: 12px;
+            text-transform: uppercase;
+            color: var(--main-gray);
+            margin-bottom: 15px;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column a {
+            text-decoration: none;
+            color: var(--main-dark-text);
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+        
+        .footer-column a:hover {
+            color: var(--main-accent);
+        }
+        
+        .copyright {
+            font-size: 12px;
+            color: var(--main-gray);
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--main-border);
+        }
+        
+        .contact-info {
+            background-color: white;
+            border-radius: 16px;
+            padding: 30px;
+            margin-top: 40px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+        
+        .contact-info p {
+            margin-bottom: 10px;
+        }
+        
+        .contact-email {
+            color: var(--main-accent);
+            text-decoration: none;
+        }
+        
+        .contact-email:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 36px;
+            }
+            
+            .subtitle {
+                font-size: 18px;
+            }
+            
+            .nav-links li {
+                margin-left: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#" class="logo">aix4all</a>
+            <ul class="nav-links">
+                <li><a href="#ueber-uns">Über uns</a></li>
+                <li><a href="#geschaeftsmodell">Geschäftsmodell</a></li>
+                <li><a href="#dienstleistungen">Dienstleistungen</a></li>
+                <li><a href="#kontakt-formular">Kontakt aufnehmen</a></li>
+                <li><a href="#kontakt">Kontakt</a></li>
+                <li><a href="#impressum">Impressum</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section class="hero">
+        <h1>Online Arbitrage & Großhandel</h1>
+        <p class="subtitle">Professioneller B2B und B2C Handel auf diversen Online-Plattformen europaweit</p>
+        <a href="#kontakt-formular" class="btn">Kontakt aufnehmen</a>
+    </section>
+    
+    <section id="ueber-uns">
+        <h2>Über uns</h2>
+        <p>aix4all.de ist Ihr verlässlicher Partner für professionellen Online-Handel und Großkundengeschäfte. Wir spezialisieren uns auf Online Arbitrage und bieten Produkte über verschiedene Plattformen an. Mit umfangreicher Erfahrung im E-Commerce und einem Gespür für lukrative Geschäftsmöglichkeiten sind wir stets auf der Suche nach neuen Partnerschaften und Geschäftsbeziehungen. Wir sind für den Handel innerhalb ganz Europas bereit und verfügen bereits über zahlreiche internationale Kontakte und Netzwerke.</p>
+        
+        <p>Als vielseitiger Händler bedienen wir sowohl B2B- als auch B2C-Märkte und haben unsere Logistikkapazitäten strategisch im EU-Ausland positioniert, um Geschäfte effizienter und kostengünstiger abwickeln zu können. Diese internationale Aufstellung ermöglicht es uns, flexibel auf Marktchancen zu reagieren und Arbitrage-Möglichkeiten über Ländergrenzen hinweg zu nutzen.</p>
+        
+        <div class="grid">
+            <div class="card">
+                <div class="card-img">
+                    <img src="/api/placeholder/400/320" alt="Online Arbitrage">
+                </div>
+                <div class="card-content">
+                    <h3>Online Arbitrage</h3>
+                    <p>Wir identifizieren Preisunterschiede zwischen verschiedenen Plattformen in ganz Europa und nutzen diese Arbitrage-Möglichkeiten geschickt aus.</p>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-img">
+                    <img src="/api/placeholder/400/320" alt="Großhandel">
+                </div>
+                <div class="card-content">
+                    <h3>Großhandel</h3>
+                    <p>Für Geschäftskunden bieten wir attraktive Konditionen und zuverlässige Lieferungen in verschiedenen Produktkategorien.</p>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-img">
+                    <img src="/api/placeholder/400/320" alt="Partnerschaften">
+                </div>
+                <div class="card-content">
+                    <h3>Partnerschaften</h3>
+                    <p>Wir sind stets offen für neue Geschäftsbeziehungen und Kooperationen mit Lieferanten und Händlern.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="geschaeftsmodell">
+        <h2>Unser Geschäftsmodell</h2>
+        <p>Bei aix4all.de verfolgen wir ein diversifiziertes Geschäftsmodell, das sowohl B2B- als auch B2C-Kanäle umfasst und durch unsere internationale Logistikinfrastruktur unterstützt wird.</p>
+        
+        <div class="grid">
+            <div class="card">
+                <div class="card-content">
+                    <h3>B2B - Geschäftskunden</h3>
+                    <p>Wir beliefern Geschäftskunden wie Einzelhändler, Wiederverkäufer und gewerbliche Abnehmer mit Waren zu Großhandelskonditionen. Unsere B2B-Kunden profitieren von Mengenrabatten, vereinfachten Bestellprozessen und einem persönlichen Ansprechpartner.</p>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-content">
+                    <h3>B2C - Endkunden</h3>
+                    <p>Über verschiedene Online-Marktplätze bedienen wir Endkunden in ganz Europa. Wir bieten qualitativ hochwertige Produkte zu wettbewerbsfähigen Preisen mit zuverlässigem Kundenservice und schnellem Versand.</p>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-content">
+                    <h3>EU-weite Logistik</h3>
+                    <p>Unsere strategische Positionierung von Logistikzentren in verschiedenen EU-Ländern ermöglicht es uns, Versandkosten zu optimieren, Lieferzeiten zu verkürzen und lokale Marktvorteile zu nutzen. Diese Infrastruktur ist ein Schlüsselelement unseres erfolgreichen Cross-Border-Geschäfts.</p>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-content">
+                    <h3>Online Arbitrage</h3>
+                    <p>Durch kontinuierliche Marktanalyse identifizieren wir Preisunterschiede zwischen verschiedenen Märkten und Plattformen. Diese Arbitrage-Möglichkeiten nutzen wir geschickt, um Mehrwert zu schaffen und wettbewerbsfähige Angebote zu ermöglichen.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="dienstleistungen">
+        <h2>Unsere Dienstleistungen</h2>
+        <p>Als erfahrener Händler bieten wir ein breites Spektrum an Dienstleistungen im Bereich des Online-Handels an. Wir sind auf diversen Plattformen präsent und suchen kontinuierlich nach neuen Geschäftsmöglichkeiten.</p>
+        
+        <div class="grid">
+            <div class="card">
+                <div class="card-content">
+                    <h3>Plattformhandel</h3>
+                    <p>Wir verkaufen Produkte auf verschiedenen Online-Marktplätzen in ganz Europa und erreichen so eine breite Kundenbasis im B2C-Bereich.</p>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-content">
+                    <h3>Preisoptimierung</h3>
+                    <p>Durch strategische Preisgestaltung und Marktbeobachtung maximieren wir den Gewinn und bleiben wettbewerbsfähig auf allen Marktplätzen.</p>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-content">
+                    <h3>Großhandelsbeziehungen</h3>
+                    <p>Wir pflegen langfristige B2B-Beziehungen und bieten Sonderkonditionen für Wiederverkäufer und gewerbliche Abnehmer.</p>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-content">
+                    <h3>Internationale Logistik</h3>
+                    <p>Mit strategischen Lagerstandorten in verschiedenen EU-Ländern optimieren wir Versandkosten und Lieferzeiten für unsere Kunden.</p>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-content">
+                    <h3>Lagerbestandsmanagement</h3>
+                    <p>Effiziente Verwaltung von Lagerbeständen für optimale Verfügbarkeit und minimale Kosten durch automatisierte Systeme.</p>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-content">
+                    <h3>Großkundenbetreuung</h3>
+                    <p>Spezielle Angebote und persönlicher Service für unsere B2B-Kunden mit individueller Beratung und maßgeschneiderten Lösungen.</p>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-content">
+                    <h3>Marktanalyse</h3>
+                    <p>Kontinuierliche Beobachtung von Markttrends und Preisschwankungen zur Identifikation lukrativer Geschäftsmöglichkeiten.</p>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-content">
+                    <h3>Cross-Border-Handel</h3>
+                    <p>Spezialisierung auf grenzüberschreitenden Handel innerhalb der EU mit Expertise in rechtlichen und logistischen Anforderungen.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="kontakt-formular">
+        <h2>Kontakt aufnehmen</h2>
+        <p>Haben Sie Interesse an einer Zusammenarbeit oder möchten Sie mehr über unsere Dienstleistungen erfahren? Füllen Sie einfach das Kontaktformular aus, und wir melden uns zeitnah bei Ihnen zurück.</p>
+        
+        <div class="contact-info">
+            <form id="contact-form" action="#" method="post">
+                <div style="margin-bottom: 20px;">
+                    <label for="name" style="display: block; margin-bottom: 5px; font-weight: 500;">Name</label>
+                    <input type="text" id="name" name="name" style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid var(--main-border); font-size: 16px;" required>
+                </div>
+                
+                <div style="margin-bottom: 20px;">
+                    <label for="email" style="display: block; margin-bottom: 5px; font-weight: 500;">E-Mail</label>
+                    <input type="email" id="email" name="email" style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid var(--main-border); font-size: 16px;" required>
+                </div>
+                
+                <div style="margin-bottom: 20px;">
+                    <label for="subject" style="display: block; margin-bottom: 5px; font-weight: 500;">Betreff</label>
+                    <input type="text" id="subject" name="subject" style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid var(--main-border); font-size: 16px;" required>
+                </div>
+                
+                <div style="margin-bottom: 20px;">
+                    <label for="business-type" style="display: block; margin-bottom: 5px; font-weight: 500;">Geschäftstyp</label>
+                    <select id="business-type" name="business-type" style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid var(--main-border); font-size: 16px; background-color: white;">
+                        <option value="b2b">B2B - Geschäftskunde</option>
+                        <option value="b2c">B2C - Endkunde</option>
+                        <option value="partnership">Partnerschaft / Kooperation</option>
+                        <option value="other">Sonstiges</option>
+                    </select>
+                </div>
+                
+                <div style="margin-bottom: 30px;">
+                    <label for="message" style="display: block; margin-bottom: 5px; font-weight: 500;">Nachricht</label>
+                    <textarea id="message" name="message" rows="5" style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid var(--main-border); font-size: 16px; resize: vertical;" required></textarea>
+                </div>
+                
+                <div>
+                    <button type="submit" class="btn" style="border: none; cursor: pointer; width: 100%;">Nachricht senden</button>
+                </div>
+            </form>
+            
+            <p style="margin-top: 20px; font-size: 14px; color: var(--main-gray);">* Alle Felder sind erforderlich</p>
+            <p style="font-size: 14px; color: var(--main-gray);">Alternativ können Sie uns auch direkt per E-Mail an <a href="mailto:info.aix4all@gmail.com" class="contact-email">info.aix4all@gmail.com</a> oder telefonisch unter +49.15120135336 kontaktieren.</p>
+        </div>
+        
+        <script>
+            document.getElementById('contact-form').addEventListener('submit', function(event) {
+                event.preventDefault();
+                alert('Vielen Dank für Ihre Nachricht! Wir werden uns in Kürze bei Ihnen melden.');
+                this.reset();
+            });
+        </script>
+    </section>
+    
+    <section id="kontakt">
+        <h2>Kontakt</h2>
+        <p>Haben Sie Interesse an einer Zusammenarbeit oder Fragen zu unseren Dienstleistungen? Kontaktieren Sie uns gerne direkt.</p>
+        
+        <div class="contact-info">
+            <p><strong>E-Mail:</strong> <a href="mailto:info.aix4all@gmail.com" class="contact-email">info.aix4all@gmail.com</a></p>
+            <p><strong>Telefon:</strong> +49.15120135336</p>
+            <p>Wir freuen uns auf Ihre Anfrage und melden uns zeitnah bei Ihnen zurück.</p>
+        </div>
+    </section>
+    
+    <section id="impressum">
+        <h2>Impressum</h2>
+        <div class="contact-info">
+            <p><strong>aix4all.de</strong></p>
+            <p>Maurice Misere</p>
+            <p>Trierer Str. 713</p>
+            <p>DE 52078 Aachen</p>
+            <p>Telefon: +49.15120135336</p>
+            <p>E-Mail: <a href="mailto:info.aix4all@gmail.com" class="contact-email">info.aix4all@gmail.com</a></p>
+            <p>IBAN: DE36 3906 0180 2114 2200 38</p>
+            <p>BIC: GENODED1AAC</p>
+            <p>USt-ID: DE353222332</p>
+            <br>
+            <p><strong>Haftungshinweis</strong></p>
+            <p>Trotz sorgfältiger inhaltlicher Kontrolle übernehmen wir keine Haftung für die Inhalte externer Links. Für den Inhalt der verlinkten Seiten sind ausschließlich deren Betreiber verantwortlich.</p>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h4>aix4all</h4>
+                <ul>
+                    <li><a href="#ueber-uns">Über uns</a></li>
+                    <li><a href="#geschaeftsmodell">Geschäftsmodell</a></li>
+                    <li><a href="#dienstleistungen">Dienstleistungen</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h4>Rechtliches</h4>
+                <ul>
+                    <li><a href="#impressum">Impressum</a></li>
+                    <li><a href="#">Datenschutz</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h4>Kontakt</h4>
+                <ul>
+                    <li><a href="#kontakt-formular">Kontakt aufnehmen</a></li>
+                    <li><a href="mailto:info.aix4all@gmail.com">E-Mail</a></li>
+                    <li><a href="tel:+4915120135336">Telefon</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            &copy; 2025 aix4all.de - Alle Rechte vorbehalten
+        </div>
+    </footer>
+</body>
+</html>
